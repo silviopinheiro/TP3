@@ -1,0 +1,14 @@
+---
+# tasks file for mysql
+- name: Create mysql database
+  mysql_db: name={{ scrm_mysql_db }} state=present
+  become: yes
+
+- name: Create mysql user
+  mysql_user: 
+    name={{ scrm_mysql_user }}
+    host=localhost
+    password={{ scrm_mysql_password }} 
+    priv=*.*:ALL
+
+  become: yes  
